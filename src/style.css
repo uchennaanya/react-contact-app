@@ -1,0 +1,47 @@
+.contact-card {
+    
+  display: flex;
+  padding: 10px;
+    align-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  max-width: 40%;
+  margin: 10px 30%;
+    
+}
+
+.contact-card p {
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+    border-radius: 4px;
+    border: none;
+    padding: .5em;
+    box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
+}
+button:hover {
+    box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
+  margin-left: 10px;
+  margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: none;
+    padding: .5em;
+}
+
+@media (min-width: 800px) {
+    .contact-card {
+      width: 100%;
+    }
+}
+@media (max-width: 670px) {
+    .contact-card {
+        max-width: 100%;
+        margin: 10px 0%;
+    }
+}

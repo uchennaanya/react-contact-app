@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./style.css";
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    
+    const [contacts, setContacts] = useState([]);
+    
+    fetch("https://randomuser.me/api/?results=4")
+    .then(response => response.json())
+    .then(data => {
+        
+//        console.log(data)
+        setContacts(data.results);
+    })
+    return (
+        
+        <>
+        {contacts.map(contact => (
+         
+          <ContactCard
+            avatar={contact.picture.large}
+            name={contact.name.first + " " + contact.name.last}
+            email={contact.email}
+            age={contact.dob.age}
+          />
+        
+        ))}
+
+        </>  
+    )
 }
 
+const ContactCard = props => {
+    
+    const [showAge, setShowAge] = useState(false);
+    
+    return (
+      
+        <div className="contact-card">
+          <img src={props.avatar} alt="profile" />
+          <div className="user-details">
+            <p>Name: {props.name}</p>
+            <p>Email: {props.email}</p>
+            { showAge && <p> Age: {props.age} </p> }
+            <button onClick={() => setShowAge(!showAge)}> Toggle Age </button>
+          </div>
+        </div> 
+    );     
+};
 export default App;
